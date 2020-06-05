@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-bind": "^4.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ibm-watson": "^5.4.0",
+    "mongoose": "^5.9.9"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
