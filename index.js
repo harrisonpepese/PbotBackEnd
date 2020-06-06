@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const converseRoute = require('./src/routes/converse')
 const stateRoute = require('./src/routes/state')
 const fluxRoute = require('./src/routes/flux')
+const intentRoute = require('./src/routes/intents')
 const fs = require('fs')
 class App {
   constructor () {
@@ -25,6 +26,7 @@ class App {
     this.app.use('/converse', converseRoute)
     this.app.use('/state', stateRoute)
     this.app.use('/flux', fluxRoute)
+    this.app.use('/intent', intentRoute)
   }
 
   db () {
@@ -32,8 +34,9 @@ class App {
       'mongodb+srv://harrisonpepese:muxuxa22@hpv0-vghvf.mongodb.net/Pbot?retryWrites=true&w=majority',
       { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
-        this.app.listen(process.env.PORT || 3001, () => {
-          console.log('is online')
+        const port = process.env.PORT || 3001
+        this.app.listen(port, () => {
+          console.log('is online ' + port)
         })
       })
   }

@@ -23,5 +23,12 @@ class IbmService {
     }).then(res => { return res.result })
       .catch(error => { throw error })
   }
+
+  async getIntents () {
+    return await this.assistant.listIntents({
+      workspaceId: 'ebcdb5d0-8e56-4843-aa03-a9fad5635fae'
+    }).then(res => { return res.result })
+      .catch(error => { throw error })
+  }
 }
 module.exports = IbmService

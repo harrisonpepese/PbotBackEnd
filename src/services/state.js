@@ -47,12 +47,15 @@ class StateService extends CRUDService {
         data: null
       }
     }
-    const res = await this[this.state.type](message, tryes, data)
+    let res = await this[this.state.type](message, tryes, data)
+    if (this.state.type === 'info') {
+      res = this.info(message, 0)
+    }
     return res
   }
 
   async info (message, tryes, data) {
-    let res = this.getResponse()
+    let res = this.getResponse(tryes)
     await this.load(this.state.nextState)
     res += `\n${this.getResponse(0)}`
     return {
