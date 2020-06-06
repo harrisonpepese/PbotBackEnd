@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 const state = new Schema({
   name: { type: String, required: true },
   flux: { type: Schema.Types.ObjectId, required: true },
-  type: { type: String, enum: ['any', 'info', 'question', 'validation', 'input'], default: 'any' },
+  type: { type: String, enum: ['info', 'question', 'validation', 'input'], required: true },
   text: { type: String, required: true },
-  inputType: { type: String, enum: ['text', 'number', 'email', 'phone'], required: true },
+  inputType: { type: String, enum: ['any', 'text', 'number', 'email', 'phone'], default: 'any' },
   tryFailText: { type: String },
   intent: { type: String },
   options: [{
