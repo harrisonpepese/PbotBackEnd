@@ -32,7 +32,7 @@ class App {
       'mongodb+srv://harrisonpepese:muxuxa22@hpv0-vghvf.mongodb.net/Pbot?retryWrites=true&w=majority',
       { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
-        this.app.listen(3001, () => {
+        this.app.listen(process.env.PORT || 3001, () => {
           console.log('is online')
         })
       })
