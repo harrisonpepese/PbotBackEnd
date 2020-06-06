@@ -39,7 +39,7 @@ class StateService extends CRUDService {
         data: null
       }
     }
-    if (tryes > this.state.maxTryes) return this.state.failState
+    if (tryes >= this.state.maxTryes) return this.state.failState
     if (!InputValidation.validate(this.state.inputType, message.text)) {
       return {
         state: this.state._id,
