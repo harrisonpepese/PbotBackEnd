@@ -20,7 +20,7 @@ class CRUDController {
   async getAll (req, res, next) {
     const { data, error } = await this.service.getAll()
     if (error) return res.status(400).send({ error })
-    return res.status(200).send({ data })
+    return res.status(200).send(data)
   }
 
   async getOne (req, res, next) {
@@ -33,21 +33,21 @@ class CRUDController {
     if (!(body)) return res.status(400).send({ error: 'parametros inválidos' })
     const { data, error } = await this.service.create(body)
     if (error) return res.status(400).send({ error })
-    return res.status(200).send({ data })
+    return res.status(200).send(data)
   }
 
   async update (req, res, next) {
     if (!(req[this.path] || req.body)) return res.status(400).send({ error: 'parametros inválidos' })
     const { data, error } = await this.service.update(req[this.path], req.body)
     if (error) return res.status(400).send({ error })
-    return res.status(200).send({ data })
+    return res.status(200).send(data)
   }
 
   async remove (req, res, next) {
     if (!req[this.path]) return res.status(400).send({ error: 'parametros inválidos' })
     const { data, error } = await this.service.remove(req[this.path])
     if (error) return res.status(400).send({ error })
-    return res.status(200).send({ data })
+    return res.status(200).send(data)
   }
 }
 

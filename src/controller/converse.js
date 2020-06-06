@@ -5,18 +5,18 @@ class ConverseController {
   }
 
   static async incomingMessage (req, res, next) {
-    const { text } = req.body
-    if (!text || !req.flux) return ConverseController.responseHandler(res, 400, 'not content')
-    const message = await processIncoming(text, req.flux)
+    if (!req.flux) return ConverseController.responseHandler(res, 400, 'not content')
+    const message = await processIncoming(req.flux)
     if (!message) return ConverseController.responseHandler(res, 400, 'not content')
     return ConverseController.responseHandler(res, 200, message)
   }
 
   static async processMessage (req, res, next) {
+    const { flux } = req
     const { text } = req.body
     const { chatId } = req.params
     if (!text || !chatId) return ConverseController.responseHandler(res, 400, 'not content')
-    const message = await processMessage(text, chatId)
+    const message = await processMessage(flux, text, chatId)
     if (!message) return ConverseController.responseHandler(res, 400, 'this session is closed')
     return ConverseController.responseHandler(res, 200, message)
   }

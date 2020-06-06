@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const { Schema, model } = require('mongoose')
 
 const integrationModel = new Schema({
@@ -5,5 +6,5 @@ const integrationModel = new Schema({
   Path: { type: String },
   method: { type: String }
 })
-
+mongoose.model('integration', integrationModel)
 module.exports = model('integration', integrationModel, 'intregation')

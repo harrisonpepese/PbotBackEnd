@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const converseRoute = require('./src/routes/converse')
 const stateRoute = require('./src/routes/state')
 const fluxRoute = require('./src/routes/flux')
+const fs = require('fs')
 class App {
   constructor () {
     this.app = express()
@@ -17,6 +18,7 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(bodyParser.json())
     this.app.use(cors())
+    fs.readdirSync('./src/models').forEach(file => require(`./src/models/${file}`))
   }
 
   routes () {
@@ -30,7 +32,7 @@ class App {
       'mongodb+srv://harrisonpepese:muxuxa22@hpv0-vghvf.mongodb.net/Pbot?retryWrites=true&w=majority',
       { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
-        this.app.listen(3000, () => {
+        this.app.listen(3001, () => {
           console.log('is online')
         })
       })

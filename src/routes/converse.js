@@ -10,8 +10,10 @@ class ConverseRoute {
 
   intantiate () {
     this.router.param('botName', fluxMiddleware)
+
     this.router.route('/:botName')
       .post(incomingMessage)
+
     this.router.route('/:botName/:chatId')
       .post(processMessage)
   }

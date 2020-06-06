@@ -33,6 +33,17 @@ class ChatService extends CRUDService {
     }
     return await this.chat.save()
   }
+
+  async updateData (object) {
+    Object.assign(this.chat.data, object)
+    this.chat.markModified('data')
+    return await this.chat.save()
+  }
+
+  async closeChat () {
+    this.chat.isClosed = true
+    return await this.chat.save()
+  }
 }
 
 module.exports = ChatService
