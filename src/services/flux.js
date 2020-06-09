@@ -50,13 +50,11 @@ class FluxService extends CRUDService {
   }
 
   async integrarTexto (chatData, text) {
+    let m
     if (chatData) {
-      const regEx = new RegExp('{([^}}]+)}')
-      const matches = regEx.exec(text)
-      if (matches) {
-        matches.forEach(m => {
-          text = text.replace(m, chatData[m.replace('{', '').replace('}', '')])
-        })
+      const regEx = new RegExp('{([^}}]+)}', 'g')
+      while ((m = regEx.exec(text)) != null) {
+        text = text.replace(m[0], chatData[m[1]])
       }
     }
     return text

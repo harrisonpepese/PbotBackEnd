@@ -48,8 +48,8 @@ class StateService extends CRUDService {
       }
     }
     let res = await this[this.state.type](message, tryes, data)
-    if (this.state.type === 'info') {
-      res = this.info(message, 0)
+    if (this.state.type === 'info' && this.state.nextState) {
+      res = this.info(message, 0, res.data)
     }
     return res
   }
@@ -61,7 +61,7 @@ class StateService extends CRUDService {
     return {
       state: this.state._id,
       text: res,
-      data: null
+      data
     }
   }
 
