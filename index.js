@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const dotEnv = require('dotenv')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const converseRoute = require('./src/routes/converse')
@@ -7,6 +8,7 @@ const stateRoute = require('./src/routes/state')
 const fluxRoute = require('./src/routes/flux')
 const intentRoute = require('./src/routes/intents')
 const fs = require('fs')
+dotEnv.config()
 class App {
   constructor () {
     this.app = express()
@@ -31,7 +33,7 @@ class App {
 
   db () {
     mongoose.connect(
-      'mongodb+srv://harrisonpepese:muxuxa22@hpv0-vghvf.mongodb.net/Pbot?retryWrites=true&w=majority',
+      process.env.DB_URL,
       { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
         const port = process.env.PORT || 3001
